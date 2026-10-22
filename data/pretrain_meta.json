@@ -1,0 +1,15 @@
+{
+  "src": "D:\\llm-rl-lab\\data\\pretrain_t2t.jsonl",
+  "seq_len": 512,
+  "n_blocks": 4314165,
+  "total_tokens_consumed": 2208852480,
+  "tokenized_tokens": 2208852597,
+  "dropped_tail_tokens": 117,
+  "n_docs": 8468827,
+  "vocab_size": 6400,
+  "eos_token_id": 2,
+  "dtype": "uint16",
+  "bin": "D:\\llm-rl-lab\\data\\tokens\\pretrain_blocks.bin",
+  "bytes": 4417704960,
+  "wall_sec": 1033.6
+}

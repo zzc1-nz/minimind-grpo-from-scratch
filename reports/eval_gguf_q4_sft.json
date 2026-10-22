@@ -1,0 +1,306 @@
+{
+  "report_version": 1,
+  "benchmark": {
+    "name": "minimind_heldout_v1",
+    "held_out": true,
+    "task_file": "D:\\llm-rl-lab\\eval\\heldout_tasks.jsonl",
+    "tasks_sha256": "6d873f2ab30ac0b31017e1cdaf62f78fc54e8358fdaedf31b1e103e6235b88df",
+    "num_tasks": 24,
+    "families": {
+      "arithmetic": 8,
+      "format": 6,
+      "logic": 6,
+      "multistep": 4
+    },
+    "lock_check": {
+      "expected": "6d873f2ab30ac0b31017e1cdaf62f78fc54e8358fdaedf31b1e103e6235b88df",
+      "actual": "6d873f2ab30ac0b31017e1cdaf62f78fc54e8358fdaedf31b1e103e6235b88df",
+      "match": true
+    }
+  },
+  "weight": {
+    "path": "D:\\llm-rl-lab\\models\\gguf\\full_sft_768-Q4_K_M.gguf",
+    "sha256": "38c4ab175f32d12c64e2a39326a6f393e1f7d46c740edb12ffd6e062a4fda6c4",
+    "bytes": 42481920
+  },
+  "model": {
+    "hidden_size": 768,
+    "num_hidden_layers": 8,
+    "params_total": 0,
+    "dtype": "gguf",
+    "missing_keys": 0,
+    "unexpected_keys": 0
+  },
+  "device": "cpu",
+  "device_reason": "gguf backend runs llama.cpp with -ngl 0",
+  "backend": "gguf",
+  "prompt_mode": "chat",
+  "prompt_template": "<|im_start|>user\n{prompt}<|im_end|>\n<|im_start|>assistant\n<think>\n\n</think>\n\n",
+  "prompt_example": "<|im_start|>user\n3 + 5 等于多少？请只回复一个数字，不要写任何解释或计算过程。<|im_end|>\n<|im_start|>assistant\n<think>\n\n</think>\n\n",
+  "generation": {
+    "mode": "greedy",
+    "do_sample": false,
+    "temperature": 1.0,
+    "top_p": 1.0,
+    "top_k": 0,
+    "repetition_penalty": 1.0,
+    "max_new_tokens": 64,
+    "eos_token_id": 2,
+    "sample_k": 1,
+    "prompt_mode": "chat"
+  },
+  "model_path": "D:\\llm-rl-lab\\models\\gguf\\full_sft_768-Q4_K_M.gguf",
+  "max_new_tokens": 64,
+  "seed": 42,
+  "timestamp": "2026-10-22T16:40:51+08:00",
+  "wall_time_s": 5.283,
+  "load_time_s": 0.0,
+  "generation_time_s": 5.265,
+  "peak_vram_mb": null,
+  "model_vram_mb": null,
+  "overall": {
+    "correct": 5,
+    "total": 24,
+    "accuracy": 0.2083
+  },
+  "per_family": {
+    "arithmetic": {
+      "correct": 1,
+      "total": 8,
+      "accuracy": 0.125
+    },
+    "format": {
+      "correct": 2,
+      "total": 6,
+      "accuracy": 0.3333
+    },
+    "logic": {
+      "correct": 1,
+      "total": 6,
+      "accuracy": 0.1667
+    },
+    "multistep": {
+      "correct": 1,
+      "total": 4,
+      "accuracy": 0.25
+    }
+  },
+  "per_task": [
+    {
+      "id": "arith_01",
+      "family": "arithmetic",
+      "prompt": "3 + 5 等于多少？请只回复一个数字，不要写任何解释或计算过程。",
+      "completion": "<think>\n\n</think>\n\n3",
+      "correct": false,
+      "reason": "mismatch:got=3 expected=8",
+      "gen_tokens": 20
+    },
+    {
+      "id": "arith_02",
+      "family": "arithmetic",
+      "prompt": "7 - 2 等于多少？请只回复一个数字，不要写任何解释或计算过程。",
+      "completion": "<think>\n\n</think>\n\n7",
+      "correct": false,
+      "reason": "mismatch:got=7 expected=5",
+      "gen_tokens": 20
+    },
+    {
+      "id": "arith_03",
+      "family": "arithmetic",
+      "prompt": "9 + 0 等于多少？请只回复一个数字，不要写任何解释或计算过程。",
+      "completion": "<think>\n\n</think>\n\n9",
+      "correct": true,
+      "reason": "ok:9",
+      "gen_tokens": 20
+    },
+    {
+      "id": "arith_04",
+      "family": "arithmetic",
+      "prompt": "2 + 9 等于多少？请只回复一个数字，不要写任何解释或计算过程。",
+      "completion": "ly, the answer to the question \"2 + 9 等于多少？\" is not provided. The question is asking for the value 2 + 9, which is a common mathematical expression for the sum of two numbers. The answer is 2.",
+      "correct": false,
+      "reason": "mismatch:got=2 expected=11",
+      "gen_tokens": 192
+    },
+    {
+      "id": "arith_05",
+      "family": "arithmetic",
+      "prompt": "0 - 9 等于多少？请只回复一个数字；如果结果是负数，请带上负号。不要写任何解释。",
+      "completion": "ly known as the \"first\" number in the context of the given problem. The term \"first\" is a common term in mathematics and mathematics to describe the number of terms in the sequence. It can also refer to the number of terms in the sequence, such as the first term, the first",
+      "correct": false,
+      "reason": "no_integer_in_completion",
+      "gen_tokens": 273
+    },
+    {
+      "id": "arith_06",
+      "family": "arithmetic",
+      "prompt": "8 - 8 等于多少？请只回复一个数字，不要写任何解释或计算过程。",
+      "completion": "<think>\n\n</think>\n\n8",
+      "correct": false,
+      "reason": "mismatch:got=8 expected=0",
+      "gen_tokens": 20
+    },
+    {
+      "id": "arith_07",
+      "family": "arithmetic",
+      "prompt": "6 + 4 等于多少？请只回复一个数字，不要写任何解释或计算过程。",
+      "completion": "<think>\n\n</think>\n\n6",
+      "correct": false,
+      "reason": "mismatch:got=6 expected=10",
+      "gen_tokens": 20
+    },
+    {
+      "id": "arith_08",
+      "family": "arithmetic",
+      "prompt": "4 - 9 等于多少？请只回复一个数字；如果结果是负数，请带上负号。不要写任何解释。",
+      "completion": "<think>\n\n</think>\n\n4",
+      "correct": false,
+      "reason": "mismatch:got=4 expected=-5",
+      "gen_tokens": 20
+    },
+    {
+      "id": "format_01",
+      "family": "format",
+      "prompt": "请计算 3 + 6 的结果，并只输出一个 JSON 对象，键名为 sum，例如：{\"sum\": 9}。不要输出任何其他内容。",
+      "completion": "<think>\n\n</think>\n\n{\"sum\":6}",
+      "correct": false,
+      "reason": "wrong_values:sum:6!=9",
+      "gen_tokens": 28
+    },
+    {
+      "id": "format_02",
+      "family": "format",
+      "prompt": "请计算 7 - 4 的结果，并只输出一个 JSON 对象，键名为 diff，例如：{\"diff\": 3}。不要输出任何其他内容。",
+      "completion": "<think>\n\n</think>\n\n{\"diff\":3}",
+      "correct": true,
+      "reason": "json_ok:{\"diff\":3}",
+      "gen_tokens": 29
+    },
+    {
+      "id": "format_03",
+      "family": "format",
+      "prompt": "5 是奇数吗？请只回答 YES 或 NO 这两个词中的一个，不要输出其他内容。",
+      "completion": "<think>\n\n</think>\n\nNO",
+      "correct": false,
+      "reason": "mismatch:got=NO expected=YES",
+      "gen_tokens": 21
+    },
+    {
+      "id": "format_04",
+      "family": "format",
+      "prompt": "8 是奇数吗？请只回答 YES 或 NO 这两个词中的一个，不要输出其他内容。",
+      "completion": "<think>\n\n</think>\n\nNO",
+      "correct": true,
+      "reason": "ok:NO",
+      "gen_tokens": 21
+    },
+    {
+      "id": "format_05",
+      "family": "format",
+      "prompt": "下面三个数中哪一个是偶数？A. 3  B. 6  C. 9。请只回答 A、B 或 C 中的一个字母，不要输出其他内容。",
+      "completion": "<think>\n\n</think>\n\nC",
+      "correct": false,
+      "reason": "mismatch:got=C expected=B",
+      "gen_tokens": 20
+    },
+    {
+      "id": "format_06",
+      "family": "format",
+      "prompt": "请计算 2 + 6 的结果，并用 a+b=c 的等式格式回答，例如 1+1=2。不要输出其他内容。",
+      "completion": "<think>\n\n</think>\n\n2",
+      "correct": false,
+      "reason": "regex_fullmatch_failed",
+      "gen_tokens": 20
+    },
+    {
+      "id": "logic_01",
+      "family": "logic",
+      "prompt": "已知 A > B 且 B > C。A 和 C 相比，谁更大？请只回答 A 或 C 中的一个字母。",
+      "completion": "<think>\n\n</think>\n\nA",
+      "correct": true,
+      "reason": "ok:A",
+      "gen_tokens": 20
+    },
+    {
+      "id": "logic_02",
+      "family": "logic",
+      "prompt": "已知 A < B 且 B < C。A 和 C 相比，谁更大？请只回答 A 或 C 中的一个字母。",
+      "completion": "<think>\n\n</think>\n\nA",
+      "correct": false,
+      "reason": "mismatch:got=A expected=C",
+      "gen_tokens": 20
+    },
+    {
+      "id": "logic_03",
+      "family": "logic",
+      "prompt": "观察数字序列：2, 4, 6, 8。下一个数应该是多少？请只回复一个数字。",
+      "completion": "<think>\n\n</think>\n\n8",
+      "correct": false,
+      "reason": "mismatch:got=8 expected=10",
+      "gen_tokens": 20
+    },
+    {
+      "id": "logic_04",
+      "family": "logic",
+      "prompt": "观察数字序列：1, 3, 5, 7。下一个数应该是多少？请只回复一个数字。",
+      "completion": "<think>\n\n</think>\n\n7",
+      "correct": false,
+      "reason": "mismatch:got=7 expected=9",
+      "gen_tokens": 20
+    },
+    {
+      "id": "logic_05",
+      "family": "logic",
+      "prompt": "数字 13 是奇数还是偶数？请只回答“奇数”或“偶数”这两个词中的一个。",
+      "completion": "<think>\n\n</think>\n\n偶数",
+      "correct": false,
+      "reason": "mismatch:got=偶数 expected=奇数",
+      "gen_tokens": 21
+    },
+    {
+      "id": "logic_06",
+      "family": "logic",
+      "prompt": "三个数 4、9、6 中最大的是哪一个？请只回复这个数字。",
+      "completion": "<think>\n\n</think>\n\n6",
+      "correct": false,
+      "reason": "mismatch:got=6 expected=9",
+      "gen_tokens": 20
+    },
+    {
+      "id": "multi_01",
+      "family": "multistep",
+      "prompt": "先计算 2 + 3，再把结果乘以 4。最终结果是多少？请只回复一个数字。",
+      "completion": "glass\n\n</think>\n\n4",
+      "correct": false,
+      "reason": "mismatch:got=4 expected=20",
+      "gen_tokens": 18
+    },
+    {
+      "id": "multi_02",
+      "family": "multistep",
+      "prompt": "先计算 7 - 4，再把结果乘以 3。最终结果是多少？请只回复一个数字。",
+      "completion": "<think>\n\n</think>\n\n7",
+      "correct": false,
+      "reason": "mismatch:got=7 expected=9",
+      "gen_tokens": 20
+    },
+    {
+      "id": "multi_03",
+      "family": "multistep",
+      "prompt": "从 1 数到 6，一共有多少个整数？请只回复一个数字。",
+      "completion": "<think>\n\n</think>\n\n6",
+      "correct": true,
+      "reason": "ok:6",
+      "gen_tokens": 20
+    },
+    {
+      "id": "multi_04",
+      "family": "multistep",
+      "prompt": "前 5 个正整数（即 1 到 5）相加的和是多少？请只回复一个数字。",
+      "completion": "<think>\n\n</think>\n\n5",
+      "correct": false,
+      "reason": "mismatch:got=5 expected=15",
+      "gen_tokens": 20
+    }
+  ]
+}

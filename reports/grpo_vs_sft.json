@@ -1,0 +1,1130 @@
+{
+  "artifact": "grpo_vs_sft",
+  "phase": 3,
+  "created_at": "2026-10-22T17:30:22+08:00",
+  "benchmark": {
+    "name": "minimind_heldout_v1",
+    "task_file": "D:\\llm-rl-lab\\eval\\heldout_tasks.jsonl",
+    "tasks_sha256": "6d873f2ab30ac0b31017e1cdaf62f78fc54e8358fdaedf31b1e103e6235b88df",
+    "grpo_tasks_sha256": "6d873f2ab30ac0b31017e1cdaf62f78fc54e8358fdaedf31b1e103e6235b88df",
+    "num_tasks": 24,
+    "lock_check_sft": {
+      "expected": "6d873f2ab30ac0b31017e1cdaf62f78fc54e8358fdaedf31b1e103e6235b88df",
+      "actual": "6d873f2ab30ac0b31017e1cdaf62f78fc54e8358fdaedf31b1e103e6235b88df",
+      "match": true
+    },
+    "lock_check_grpo": {
+      "expected": "6d873f2ab30ac0b31017e1cdaf62f78fc54e8358fdaedf31b1e103e6235b88df",
+      "actual": "6d873f2ab30ac0b31017e1cdaf62f78fc54e8358fdaedf31b1e103e6235b88df",
+      "match": true
+    },
+    "benchmark_identical": true
+  },
+  "comparison_conditions": {
+    "prompt_mode": "chat",
+    "prompt_template": "<|im_start|>user\n{prompt}<|im_end|>\n<|im_start|>assistant\n<think>\n\n</think>\n\n",
+    "grpo_prompt_template": "<|im_start|>user\n{prompt}<|im_end|>\n<|im_start|>assistant\n<think>\n\n</think>\n\n",
+    "max_new_tokens": 64,
+    "seed": 42,
+    "generation_mode": "greedy",
+    "device": "cuda",
+    "hidden_size": 768,
+    "num_hidden_layers": 8,
+    "validity_note": "both runs use the same prompt mode, the same max_new_tokens and the same seed; run_eval.py records the prompt template in each report and this artifact refuses to compare otherwise"
+  },
+  "checkpoints": {
+    "sft": {
+      "weight": {
+        "path": "D:\\llm-rl-lab\\src\\minimind-master\\out\\full_sft_768.pth",
+        "sha256": "971200e9ce4012108b35083ecaf28d9c96526593b106665794735e984b5086ce",
+        "bytes": 137684000
+      },
+      "eval_command": [
+        "D:\\llm-rl-lab\\.venv\\Scripts\\python.exe",
+        "D:\\llm-rl-lab\\eval\\run_eval.py",
+        "--weight",
+        "D:\\llm-rl-lab\\src\\minimind-master\\out\\full_sft_768.pth",
+        "--hidden",
+        "768",
+        "--layers",
+        "8",
+        "--max-new-tokens",
+        "64",
+        "--device",
+        "cuda",
+        "--prompt-mode",
+        "chat",
+        "--seed",
+        "42",
+        "--out",
+        "C:\\Users\\24657\\AppData\\Local\\Temp\\cmp_sft_grpo_r8gd8nhb\\sft_eval.json"
+      ],
+      "device_reason": "cuda_free_vram_7106MiB",
+      "wall_time_s": 9.078,
+      "peak_vram_mb": 144.8
+    },
+    "grpo": {
+      "weight": {
+        "path": "D:\\llm-rl-lab\\src\\minimind-master\\out\\grpo_stage3_full_768.pth",
+        "sha256": "aee0658da29e3d78e8e9f9f6dcb1ef7f713a1e1fb5b64c165ae40c8af6e55fcb",
+        "bytes": 137684760
+      },
+      "eval_command": [
+        "D:\\llm-rl-lab\\.venv\\Scripts\\python.exe",
+        "D:\\llm-rl-lab\\eval\\run_eval.py",
+        "--weight",
+        "D:\\llm-rl-lab\\src\\minimind-master\\out\\grpo_stage3_full_768.pth",
+        "--hidden",
+        "768",
+        "--layers",
+        "8",
+        "--max-new-tokens",
+        "64",
+        "--device",
+        "cuda",
+        "--prompt-mode",
+        "chat",
+        "--seed",
+        "42",
+        "--out",
+        "C:\\Users\\24657\\AppData\\Local\\Temp\\cmp_sft_grpo_r8gd8nhb\\grpo_eval.json"
+      ],
+      "device_reason": "cuda_free_vram_7106MiB",
+      "wall_time_s": 10.471,
+      "peak_vram_mb": 144.8
+    }
+  },
+  "overall": {
+    "sft": {
+      "correct": 7,
+      "total": 24,
+      "accuracy": 0.2917
+    },
+    "grpo": {
+      "correct": 14,
+      "total": 24,
+      "accuracy": 0.5833
+    },
+    "delta": {
+      "correct": 7,
+      "accuracy": 0.2916
+    },
+    "mcnemar": {
+      "both_right": 6,
+      "sft_only_right": 1,
+      "grpo_only_right": 8,
+      "both_wrong": 9,
+      "discordant_pairs": 9,
+      "p_value": 0.0390625,
+      "method": "two-sided exact McNemar (binomial, p=0.5, math.comb)",
+      "significant_at_5pct": true
+    }
+  },
+  "per_family": {
+    "arithmetic": {
+      "sft": {
+        "correct": 1,
+        "total": 8,
+        "accuracy": 0.125
+      },
+      "grpo": {
+        "correct": 7,
+        "total": 8,
+        "accuracy": 0.875
+      },
+      "delta": {
+        "correct": 6,
+        "accuracy": 0.75
+      }
+    },
+    "format": {
+      "sft": {
+        "correct": 3,
+        "total": 6,
+        "accuracy": 0.5
+      },
+      "grpo": {
+        "correct": 2,
+        "total": 6,
+        "accuracy": 0.3333
+      },
+      "delta": {
+        "correct": -1,
+        "accuracy": -0.1667
+      }
+    },
+    "logic": {
+      "sft": {
+        "correct": 2,
+        "total": 6,
+        "accuracy": 0.3333
+      },
+      "grpo": {
+        "correct": 2,
+        "total": 6,
+        "accuracy": 0.3333
+      },
+      "delta": {
+        "correct": 0,
+        "accuracy": 0.0
+      }
+    },
+    "multistep": {
+      "sft": {
+        "correct": 1,
+        "total": 4,
+        "accuracy": 0.25
+      },
+      "grpo": {
+        "correct": 3,
+        "total": 4,
+        "accuracy": 0.75
+      },
+      "delta": {
+        "correct": 2,
+        "accuracy": 0.5
+      }
+    }
+  },
+  "per_task": [
+    {
+      "id": "arith_01",
+      "family": "arithmetic",
+      "prompt": "3 + 5 等于多少？请只回复一个数字，不要写任何解释或计算过程。",
+      "sft": {
+        "correct": false,
+        "completion": "7<|im_end|>",
+        "reason": "mismatch:got=7 expected=8"
+      },
+      "grpo": {
+        "correct": true,
+        "completion": "3 + 5 = 8<|im_end|>",
+        "reason": "ok:8"
+      },
+      "transition": "grpo_only_right"
+    },
+    {
+      "id": "arith_02",
+      "family": "arithmetic",
+      "prompt": "7 - 2 等于多少？请只回复一个数字，不要写任何解释或计算过程。",
+      "sft": {
+        "correct": false,
+        "completion": "7<|im_end|>",
+        "reason": "mismatch:got=7 expected=5"
+      },
+      "grpo": {
+        "correct": true,
+        "completion": "7 - 2 = 5<|im_end|>",
+        "reason": "ok:5"
+      },
+      "transition": "grpo_only_right"
+    },
+    {
+      "id": "arith_03",
+      "family": "arithmetic",
+      "prompt": "9 + 0 等于多少？请只回复一个数字，不要写任何解释或计算过程。",
+      "sft": {
+        "correct": true,
+        "completion": "9<|im_end|>",
+        "reason": "ok:9"
+      },
+      "grpo": {
+        "correct": true,
+        "completion": "9 + 0 = 9<|im_end|>",
+        "reason": "ok:9"
+      },
+      "transition": "both_right"
+    },
+    {
+      "id": "arith_04",
+      "family": "arithmetic",
+      "prompt": "2 + 9 等于多少？请只回复一个数字，不要写任何解释或计算过程。",
+      "sft": {
+        "correct": false,
+        "completion": "9<|im_end|>",
+        "reason": "mismatch:got=9 expected=11"
+      },
+      "grpo": {
+        "correct": true,
+        "completion": "2 + 9 = 11<|im_end|>",
+        "reason": "ok:11"
+      },
+      "transition": "grpo_only_right"
+    },
+    {
+      "id": "arith_05",
+      "family": "arithmetic",
+      "prompt": "0 - 9 等于多少？请只回复一个数字；如果结果是负数，请带上负号。不要写任何解释。",
+      "sft": {
+        "correct": false,
+        "completion": "0<|im_end|>",
+        "reason": "mismatch:got=0 expected=-9"
+      },
+      "grpo": {
+        "correct": true,
+        "completion": "0 - 9<|im_end|>",
+        "reason": "ok:-9"
+      },
+      "transition": "grpo_only_right"
+    },
+    {
+      "id": "arith_06",
+      "family": "arithmetic",
+      "prompt": "8 - 8 等于多少？请只回复一个数字，不要写任何解释或计算过程。",
+      "sft": {
+        "correct": false,
+        "completion": "8<|im_end|>",
+        "reason": "mismatch:got=8 expected=0"
+      },
+      "grpo": {
+        "correct": true,
+        "completion": "8 - 8 = 0<|im_end|>",
+        "reason": "ok:0"
+      },
+      "transition": "grpo_only_right"
+    },
+    {
+      "id": "arith_07",
+      "family": "arithmetic",
+      "prompt": "6 + 4 等于多少？请只回复一个数字，不要写任何解释或计算过程。",
+      "sft": {
+        "correct": false,
+        "completion": "6<|im_end|>",
+        "reason": "mismatch:got=6 expected=10"
+      },
+      "grpo": {
+        "correct": true,
+        "completion": "6 + 4 = 10<|im_end|>",
+        "reason": "ok:10"
+      },
+      "transition": "grpo_only_right"
+    },
+    {
+      "id": "arith_08",
+      "family": "arithmetic",
+      "prompt": "4 - 9 等于多少？请只回复一个数字；如果结果是负数，请带上负号。不要写任何解释。",
+      "sft": {
+        "correct": false,
+        "completion": "9<|im_end|>",
+        "reason": "mismatch:got=9 expected=-5"
+      },
+      "grpo": {
+        "correct": false,
+        "completion": "4 - 9 = -7<|im_end|>",
+        "reason": "mismatch:got=-7 expected=-5"
+      },
+      "transition": "both_wrong"
+    },
+    {
+      "id": "format_01",
+      "family": "format",
+      "prompt": "请计算 3 + 6 的结果，并只输出一个 JSON 对象，键名为 sum，例如：{\"sum\": 9}。不要输出任何其他内容。",
+      "sft": {
+        "correct": false,
+        "completion": "{\"sum\":6}<|im_end|>",
+        "reason": "wrong_values:sum:6!=9"
+      },
+      "grpo": {
+        "correct": false,
+        "completion": "{\"sum\":6}<|im_end|>",
+        "reason": "wrong_values:sum:6!=9"
+      },
+      "transition": "both_wrong"
+    },
+    {
+      "id": "format_02",
+      "family": "format",
+      "prompt": "请计算 7 - 4 的结果，并只输出一个 JSON 对象，键名为 diff，例如：{\"diff\": 3}。不要输出任何其他内容。",
+      "sft": {
+        "correct": true,
+        "completion": "{\"diff\":3}<|im_end|>",
+        "reason": "json_ok:{\"diff\":3}"
+      },
+      "grpo": {
+        "correct": true,
+        "completion": "{\"diff\":3}<|im_end|>",
+        "reason": "json_ok:{\"diff\":3}"
+      },
+      "transition": "both_right"
+    },
+    {
+      "id": "format_03",
+      "family": "format",
+      "prompt": "5 是奇数吗？请只回答 YES 或 NO 这两个词中的一个，不要输出其他内容。",
+      "sft": {
+        "correct": false,
+        "completion": "NO<|im_end|>",
+        "reason": "mismatch:got=NO expected=YES"
+      },
+      "grpo": {
+        "correct": false,
+        "completion": "NO<|im_end|>",
+        "reason": "mismatch:got=NO expected=YES"
+      },
+      "transition": "both_wrong"
+    },
+    {
+      "id": "format_04",
+      "family": "format",
+      "prompt": "8 是奇数吗？请只回答 YES 或 NO 这两个词中的一个，不要输出其他内容。",
+      "sft": {
+        "correct": true,
+        "completion": "NO<|im_end|>",
+        "reason": "ok:NO"
+      },
+      "grpo": {
+        "correct": true,
+        "completion": "NO<|im_end|>",
+        "reason": "ok:NO"
+      },
+      "transition": "both_right"
+    },
+    {
+      "id": "format_05",
+      "family": "format",
+      "prompt": "下面三个数中哪一个是偶数？A. 3  B. 6  C. 9。请只回答 A、B 或 C 中的一个字母，不要输出其他内容。",
+      "sft": {
+        "correct": true,
+        "completion": "B<|im_end|>",
+        "reason": "ok:B"
+      },
+      "grpo": {
+        "correct": false,
+        "completion": "C<|im_end|>",
+        "reason": "mismatch:got=C expected=B"
+      },
+      "transition": "sft_only_right"
+    },
+    {
+      "id": "format_06",
+      "family": "format",
+      "prompt": "请计算 2 + 6 的结果，并用 a+b=c 的等式格式回答，例如 1+1=2。不要输出其他内容。",
+      "sft": {
+        "correct": false,
+        "completion": "2<|im_end|>",
+        "reason": "regex_fullmatch_failed"
+      },
+      "grpo": {
+        "correct": false,
+        "completion": "2 + 6 = 8\n\n8<|im_end|>",
+        "reason": "regex_fullmatch_failed"
+      },
+      "transition": "both_wrong"
+    },
+    {
+      "id": "logic_01",
+      "family": "logic",
+      "prompt": "已知 A > B 且 B > C。A 和 C 相比，谁更大？请只回答 A 或 C 中的一个字母。",
+      "sft": {
+        "correct": true,
+        "completion": "A<|im_end|>",
+        "reason": "ok:A"
+      },
+      "grpo": {
+        "correct": true,
+        "completion": "A<|im_end|>",
+        "reason": "ok:A"
+      },
+      "transition": "both_right"
+    },
+    {
+      "id": "logic_02",
+      "family": "logic",
+      "prompt": "已知 A < B 且 B < C。A 和 C 相比，谁更大？请只回答 A 或 C 中的一个字母。",
+      "sft": {
+        "correct": false,
+        "completion": "A<|im_end|>",
+        "reason": "mismatch:got=A expected=C"
+      },
+      "grpo": {
+        "correct": false,
+        "completion": "A<|im_end|>",
+        "reason": "mismatch:got=A expected=C"
+      },
+      "transition": "both_wrong"
+    },
+    {
+      "id": "logic_03",
+      "family": "logic",
+      "prompt": "观察数字序列：2, 4, 6, 8。下一个数应该是多少？请只回复一个数字。",
+      "sft": {
+        "correct": false,
+        "completion": "8<|im_end|>",
+        "reason": "mismatch:got=8 expected=10"
+      },
+      "grpo": {
+        "correct": false,
+        "completion": "2<|im_end|>",
+        "reason": "mismatch:got=2 expected=10"
+      },
+      "transition": "both_wrong"
+    },
+    {
+      "id": "logic_04",
+      "family": "logic",
+      "prompt": "观察数字序列：1, 3, 5, 7。下一个数应该是多少？请只回复一个数字。",
+      "sft": {
+        "correct": false,
+        "completion": "7<|im_end|>",
+        "reason": "mismatch:got=7 expected=9"
+      },
+      "grpo": {
+        "correct": false,
+        "completion": "下一个数是 7。<|im_end|>",
+        "reason": "mismatch:got=7 expected=9"
+      },
+      "transition": "both_wrong"
+    },
+    {
+      "id": "logic_05",
+      "family": "logic",
+      "prompt": "数字 13 是奇数还是偶数？请只回答“奇数”或“偶数”这两个词中的一个。",
+      "sft": {
+        "correct": true,
+        "completion": "奇数<|im_end|>",
+        "reason": "ok:奇数"
+      },
+      "grpo": {
+        "correct": true,
+        "completion": "奇数<|im_end|>",
+        "reason": "ok:奇数"
+      },
+      "transition": "both_right"
+    },
+    {
+      "id": "logic_06",
+      "family": "logic",
+      "prompt": "三个数 4、9、6 中最大的是哪一个？请只回复这个数字。",
+      "sft": {
+        "correct": false,
+        "completion": "6<|im_end|>",
+        "reason": "mismatch:got=6 expected=9"
+      },
+      "grpo": {
+        "correct": false,
+        "completion": "6<|im_end|>",
+        "reason": "mismatch:got=6 expected=9"
+      },
+      "transition": "both_wrong"
+    },
+    {
+      "id": "multi_01",
+      "family": "multistep",
+      "prompt": "先计算 2 + 3，再把结果乘以 4。最终结果是多少？请只回复一个数字。",
+      "sft": {
+        "correct": false,
+        "completion": "4<|im_end|>",
+        "reason": "mismatch:got=4 expected=20"
+      },
+      "grpo": {
+        "correct": true,
+        "completion": "2 + 3 = 5\n\n5乘以4等于20。<|im_end|>",
+        "reason": "ok:20"
+      },
+      "transition": "grpo_only_right"
+    },
+    {
+      "id": "multi_02",
+      "family": "multistep",
+      "prompt": "先计算 7 - 4，再把结果乘以 3。最终结果是多少？请只回复一个数字。",
+      "sft": {
+        "correct": false,
+        "completion": "7 - 4<|im_end|>",
+        "reason": "mismatch:got=-4 expected=9"
+      },
+      "grpo": {
+        "correct": true,
+        "completion": "7 - 4 = 3\n\n3乘以3等于9。<|im_end|>",
+        "reason": "ok:9"
+      },
+      "transition": "grpo_only_right"
+    },
+    {
+      "id": "multi_03",
+      "family": "multistep",
+      "prompt": "从 1 数到 6，一共有多少个整数？请只回复一个数字。",
+      "sft": {
+        "correct": true,
+        "completion": "6<|im_end|>",
+        "reason": "ok:6"
+      },
+      "grpo": {
+        "correct": true,
+        "completion": "1 数到 6 的整数有：1, 2, 3, 4, 5, 6。<|im_end|>",
+        "reason": "ok:6"
+      },
+      "transition": "both_right"
+    },
+    {
+      "id": "multi_04",
+      "family": "multistep",
+      "prompt": "前 5 个正整数（即 1 到 5）相加的和是多少？请只回复一个数字。",
+      "sft": {
+        "correct": false,
+        "completion": "5<|im_end|>",
+        "reason": "mismatch:got=5 expected=15"
+      },
+      "grpo": {
+        "correct": false,
+        "completion": "5 + 7 + 9 = 23<|im_end|>",
+        "reason": "mismatch:got=23 expected=15"
+      },
+      "transition": "both_wrong"
+    }
+  ],
+  "per_task_mcnemar": {
+    "method": "exact two-sided McNemar on the discordant pairs; p = 2 * P(X <= min(b,c)), X ~ Binomial(b+c, 0.5), computed with math.comb",
+    "b": {
+      "name": "sft_only_right",
+      "count": 1
+    },
+    "c": {
+      "name": "grpo_only_right",
+      "count": 8
+    },
+    "p_value": 0.0390625,
+    "significant_at_5pct": true,
+    "contingency": {
+      "both_right": 6,
+      "sft_only_right": 1,
+      "grpo_only_right": 8,
+      "both_wrong": 9
+    },
+    "rows": [
+      {
+        "id": "arith_01",
+        "family": "arithmetic",
+        "transition": "grpo_only_right",
+        "sft_correct": false,
+        "grpo_correct": true
+      },
+      {
+        "id": "arith_02",
+        "family": "arithmetic",
+        "transition": "grpo_only_right",
+        "sft_correct": false,
+        "grpo_correct": true
+      },
+      {
+        "id": "arith_03",
+        "family": "arithmetic",
+        "transition": "both_right",
+        "sft_correct": true,
+        "grpo_correct": true
+      },
+      {
+        "id": "arith_04",
+        "family": "arithmetic",
+        "transition": "grpo_only_right",
+        "sft_correct": false,
+        "grpo_correct": true
+      },
+      {
+        "id": "arith_05",
+        "family": "arithmetic",
+        "transition": "grpo_only_right",
+        "sft_correct": false,
+        "grpo_correct": true
+      },
+      {
+        "id": "arith_06",
+        "family": "arithmetic",
+        "transition": "grpo_only_right",
+        "sft_correct": false,
+        "grpo_correct": true
+      },
+      {
+        "id": "arith_07",
+        "family": "arithmetic",
+        "transition": "grpo_only_right",
+        "sft_correct": false,
+        "grpo_correct": true
+      },
+      {
+        "id": "arith_08",
+        "family": "arithmetic",
+        "transition": "both_wrong",
+        "sft_correct": false,
+        "grpo_correct": false
+      },
+      {
+        "id": "format_01",
+        "family": "format",
+        "transition": "both_wrong",
+        "sft_correct": false,
+        "grpo_correct": false
+      },
+      {
+        "id": "format_02",
+        "family": "format",
+        "transition": "both_right",
+        "sft_correct": true,
+        "grpo_correct": true
+      },
+      {
+        "id": "format_03",
+        "family": "format",
+        "transition": "both_wrong",
+        "sft_correct": false,
+        "grpo_correct": false
+      },
+      {
+        "id": "format_04",
+        "family": "format",
+        "transition": "both_right",
+        "sft_correct": true,
+        "grpo_correct": true
+      },
+      {
+        "id": "format_05",
+        "family": "format",
+        "transition": "sft_only_right",
+        "sft_correct": true,
+        "grpo_correct": false
+      },
+      {
+        "id": "format_06",
+        "family": "format",
+        "transition": "both_wrong",
+        "sft_correct": false,
+        "grpo_correct": false
+      },
+      {
+        "id": "logic_01",
+        "family": "logic",
+        "transition": "both_right",
+        "sft_correct": true,
+        "grpo_correct": true
+      },
+      {
+        "id": "logic_02",
+        "family": "logic",
+        "transition": "both_wrong",
+        "sft_correct": false,
+        "grpo_correct": false
+      },
+      {
+        "id": "logic_03",
+        "family": "logic",
+        "transition": "both_wrong",
+        "sft_correct": false,
+        "grpo_correct": false
+      },
+      {
+        "id": "logic_04",
+        "family": "logic",
+        "transition": "both_wrong",
+        "sft_correct": false,
+        "grpo_correct": false
+      },
+      {
+        "id": "logic_05",
+        "family": "logic",
+        "transition": "both_right",
+        "sft_correct": true,
+        "grpo_correct": true
+      },
+      {
+        "id": "logic_06",
+        "family": "logic",
+        "transition": "both_wrong",
+        "sft_correct": false,
+        "grpo_correct": false
+      },
+      {
+        "id": "multi_01",
+        "family": "multistep",
+        "transition": "grpo_only_right",
+        "sft_correct": false,
+        "grpo_correct": true
+      },
+      {
+        "id": "multi_02",
+        "family": "multistep",
+        "transition": "grpo_only_right",
+        "sft_correct": false,
+        "grpo_correct": true
+      },
+      {
+        "id": "multi_03",
+        "family": "multistep",
+        "transition": "both_right",
+        "sft_correct": true,
+        "grpo_correct": true
+      },
+      {
+        "id": "multi_04",
+        "family": "multistep",
+        "transition": "both_wrong",
+        "sft_correct": false,
+        "grpo_correct": false
+      }
+    ]
+  },
+  "grpo_training_health": {
+    "n_steps": 600,
+    "mean_adv_std": 0.37958,
+    "frac_steps_no_signal": 0.3567,
+    "source": "D:\\llm-rl-lab\\logs\\grpo_stage3_full_summary.json",
+    "discovery": {
+      "mode": "auto",
+      "tried": [
+        "D:\\llm-rl-lab\\logs\\grpo_stage3_full_summary.json",
+        "D:\\llm-rl-lab\\logs\\grpo_stage3_full.jsonl"
+      ],
+      "found_summary": "D:\\llm-rl-lab\\logs\\grpo_stage3_full_summary.json",
+      "found_metrics": "D:\\llm-rl-lab\\logs\\grpo_stage3_full.jsonl",
+      "attribution": {
+        "checked": true,
+        "ok": true,
+        "summary_final_weight": "D:\\llm-rl-lab\\src\\minimind-master\\out/grpo_stage3_full_768.pth",
+        "evaluated_weight": "D:\\llm-rl-lab\\src\\minimind-master\\out\\grpo_stage3_full_768.pth"
+      }
+    },
+    "summary_err": null,
+    "steps": 600,
+    "opt_steps": 600,
+    "cum_sampled_tokens": 839232,
+    "wall_sec": 713.6,
+    "peak_reserved_MiB": 5914
+  },
+  "token_accounting": {
+    "pretrain": {
+      "basis": "tokens fed to the model, packed blocks (no padding)",
+      "corpus": {
+        "source": "D:\\llm-rl-lab\\data\\tokens\\pretrain_meta.json",
+        "total_tokens_consumed": 2208852480,
+        "tokenized_tokens": 2208852597,
+        "dropped_tail_tokens": 117,
+        "n_blocks": 4314165,
+        "seq_len": 512,
+        "n_docs": 8468827,
+        "display": "2,208,852,480 tokens",
+        "identity_check": "n_blocks * seq_len = 2,208,852,480 vs total_tokens_consumed = 2,208,852,480"
+      },
+      "tokens_consumed_by_training": {
+        "value": 2208841728,
+        "basis": "steps x tokens_per_step",
+        "source": "D:\\llm-rl-lab\\logs\\pretrain_metrics_summary.json: steps x tokens_per_step",
+        "complete_run": false,
+        "display": "2,208,841,728 tokens"
+      }
+    },
+    "sft": {
+      "basis": "padded tokens fed to the model vs assistant-only label tokens",
+      "meta": {
+        "source": "D:\\llm-rl-lab\\data\\sft\\sft_meta.json",
+        "out_records": 200000,
+        "max_seq_len": 768,
+        "batch_size_for_padded_math": 16,
+        "aux_fraction_by_record": 0.2,
+        "aux_fraction_by_labeled_tokens": 0.00608259,
+        "out_sha256": "f22f685712944e6361629c5304ada02eafbceaaeb5fc9f907cfc501c1a95b00f"
+      },
+      "padded_total": {
+        "value": 153600000,
+        "basis": "out_records x max_seq_len (the trainer pads every sample)",
+        "display": "153,600,000 tokens"
+      },
+      "supervised": {
+        "value": 66236849,
+        "basis": "labels != -100 (assistant turns only), truncated at max_seq_len",
+        "display": "66,236,849 tokens"
+      },
+      "untruncated_prompt_tokens": 80977303,
+      "padded_waste_frac": 0.5688,
+      "measured_run": {
+        "source": "D:\\llm-rl-lab\\logs\\sft_metrics.jsonl",
+        "steps": 12500,
+        "cum_tokens_total": 153600000,
+        "cum_tokens_supervised": 66203231,
+        "complete_run": true,
+        "display": "153600000 total / 66203231 supervised (step 12500)"
+      }
+    },
+    "grpo": {
+      "basis": "completion tokens actually sampled during rollout",
+      "per_stage": [
+        {
+          "file": "grpo_stage1_easy_summary.json",
+          "steps": 200,
+          "cum_sampled_tokens": 313216,
+          "cum_prompt_tokens": 35787
+        },
+        {
+          "file": "grpo_stage2_medium_summary.json",
+          "steps": 400,
+          "cum_sampled_tokens": 487424,
+          "cum_prompt_tokens": 69772
+        },
+        {
+          "file": "grpo_stage3_full_summary.json",
+          "steps": 600,
+          "cum_sampled_tokens": 839232,
+          "cum_prompt_tokens": 105124
+        }
+      ],
+      "sampled_tokens": {
+        "value": 1639872,
+        "basis": "sum over all curriculum stages of measured completion_mask.sum() per step",
+        "display": "1,639,872 tokens"
+      },
+      "prompt_tokens": {
+        "value": 210683,
+        "display": "210,683 tokens",
+        "note": "conditioning context, NOT added to the grand total"
+      },
+      "summary": {
+        "source": "D:\\llm-rl-lab\\logs\\grpo_stage3_full_summary.json",
+        "steps": 600,
+        "opt_steps": 600,
+        "cum_sampled_tokens": 839232,
+        "cum_prompt_tokens": 105124,
+        "wall_sec": 713.6,
+        "peak_reserved_MiB": 5914,
+        "note": "final stage only; the totals above cover the whole curriculum"
+      }
+    },
+    "grand_total_tokens": {
+      "value": 2364081600,
+      "display": "2,364,081,600 tokens",
+      "components": {
+        "pretrain": 2208841728,
+        "sft": 153600000,
+        "grpo": 1639872
+      },
+      "missing_components": []
+    },
+    "consumed_so_far_tokens": {
+      "value": 2364081600,
+      "display": "2,364,081,600 tokens",
+      "components": {
+        "pretrain": 2208841728,
+        "sft": 153600000,
+        "grpo": 1639872
+      },
+      "missing_components": [],
+      "basis": "what has actually been fed/sampled by the trainers so far (pretrain: last cum_tokens; SFT: trainer counter if a run exists; GRPO: cum_sampled_tokens)"
+    },
+    "accounting_notes": [
+      "grand_total_tokens = pretrain corpus budget + SFT padded one-epoch tokens + GRPO sampled completion tokens. It counts PADDED SFT tokens (the model consumed them) and excludes GRPO prompt tokens (they are re-encoded every step, not unique data) and SFT label tokens (a subset of the padded total, so adding them would double count).",
+      "PRETRAIN: tokens_consumed_by_training = steps x tokens_per_step, read from the training log (logs/pretrain_metrics_summary.json if present, else the last cum_tokens in logs/pretrain_metrics.jsonl). The corpus budget in data/tokens/pretrain_meta.json is n_blocks x seq_len and contains no padding.",
+      "SFT: padded_total = out_records x max_seq_len, i.e. every sample padded to the sequence length (MiniMind pads; measured 48 % waste at seq 768). supervised = labels != -100 (assistant turns only). These two are the measured one-epoch budget from data/sft/sft_meta.json; if a real SFT run has happened, its own trainer counters are reported under sft.measured_run and used for consumed_so_far.",
+      "GRPO: sampled_tokens is the measured number of completion tokens sampled (the generation cost that dominates GRPO wall time). prompt_tokens is reported separately and NOT added to the total: the same prompts are re-encoded on every step, so they are compute, not data.",
+      "Every value above is either measured or explicitly n/a with the path that was looked for. No token count in this block is estimated."
+    ]
+  },
+  "verdict": {
+    "headline": "GRPO improves overall accuracy by 7/24 (7/24 -> 14/24, 29.2% -> 58.3%); exact McNemar p = 0.0391, i.e. the delta is statistically distinguishable at the 5 % level.",
+    "text": "GRPO improves overall accuracy by 7/24 (7/24 -> 14/24, 29.2% -> 58.3%); exact McNemar p = 0.0391, i.e. the delta is statistically distinguishable at the 5 % level.\nFamilies that improved: arithmetic (1/8 -> 7/8), multistep (1/4 -> 3/4).\nFamilies unchanged: logic.\nFamilies that regressed: format (3/6 -> 2/6).\nNo reason rule fired: the observed pattern does not match any of the pre-registered explanations, so no cause is claimed.\n\nChance baseline: a guessing model scores 14.2 % on this benchmark (3.4 of 24 tasks), because `format` and `logic` are 2-3-way choices. 7/24 correct is the minimum that beats chance at the 5 % level.\nToken accounting is in `token_accounting`; grand total 2,364,081,600 tokens.",
+    "rules_fired": [
+      "no_reason_rule_fired"
+    ],
+    "chance_baseline": {
+      "overall": {
+        "tasks": 24,
+        "expected_correct_by_chance": 3.415,
+        "chance_accuracy": 0.1423,
+        "chance_accuracy_pct": 14.2,
+        "min_correct_for_significance_5pct": 7,
+        "interpretation": "A model scoring 7 or more of 24 is better than chance at the 5 % level; scores below that are indistinguishable from guessing."
+      },
+      "per_family": {
+        "arithmetic": {
+          "tasks": 8,
+          "expected_correct_by_chance": 0.258,
+          "chance_accuracy": 0.0323,
+          "chance_accuracy_pct": 3.2
+        },
+        "format": {
+          "tasks": 6,
+          "expected_correct_by_chance": 1.431,
+          "chance_accuracy": 0.2385,
+          "chance_accuracy_pct": 23.9
+        },
+        "logic": {
+          "tasks": 6,
+          "expected_correct_by_chance": 1.597,
+          "chance_accuracy": 0.2661,
+          "chance_accuracy_pct": 26.6
+        },
+        "multistep": {
+          "tasks": 4,
+          "expected_correct_by_chance": 0.129,
+          "chance_accuracy": 0.0323,
+          "chance_accuracy_pct": 3.2
+        }
+      },
+      "per_task": [
+        {
+          "id": "arith_01",
+          "family": "arithmetic",
+          "checker": "exact_int",
+          "answer_space": 31,
+          "p_correct_by_chance": 0.03226
+        },
+        {
+          "id": "arith_02",
+          "family": "arithmetic",
+          "checker": "exact_int",
+          "answer_space": 31,
+          "p_correct_by_chance": 0.03226
+        },
+        {
+          "id": "arith_03",
+          "family": "arithmetic",
+          "checker": "exact_int",
+          "answer_space": 31,
+          "p_correct_by_chance": 0.03226
+        },
+        {
+          "id": "arith_04",
+          "family": "arithmetic",
+          "checker": "exact_int",
+          "answer_space": 31,
+          "p_correct_by_chance": 0.03226
+        },
+        {
+          "id": "arith_05",
+          "family": "arithmetic",
+          "checker": "exact_int",
+          "answer_space": 31,
+          "p_correct_by_chance": 0.03226
+        },
+        {
+          "id": "arith_06",
+          "family": "arithmetic",
+          "checker": "exact_int",
+          "answer_space": 31,
+          "p_correct_by_chance": 0.03226
+        },
+        {
+          "id": "arith_07",
+          "family": "arithmetic",
+          "checker": "exact_int",
+          "answer_space": 31,
+          "p_correct_by_chance": 0.03226
+        },
+        {
+          "id": "arith_08",
+          "family": "arithmetic",
+          "checker": "exact_int",
+          "answer_space": 31,
+          "p_correct_by_chance": 0.03226
+        },
+        {
+          "id": "format_01",
+          "family": "format",
+          "checker": "exact_json",
+          "answer_space": 31,
+          "p_correct_by_chance": 0.03226
+        },
+        {
+          "id": "format_02",
+          "family": "format",
+          "checker": "exact_json",
+          "answer_space": 31,
+          "p_correct_by_chance": 0.03226
+        },
+        {
+          "id": "format_03",
+          "family": "format",
+          "checker": "choice",
+          "answer_space": 2,
+          "p_correct_by_chance": 0.5
+        },
+        {
+          "id": "format_04",
+          "family": "format",
+          "checker": "choice",
+          "answer_space": 2,
+          "p_correct_by_chance": 0.5
+        },
+        {
+          "id": "format_05",
+          "family": "format",
+          "checker": "choice",
+          "answer_space": 3,
+          "p_correct_by_chance": 0.33333
+        },
+        {
+          "id": "format_06",
+          "family": "format",
+          "checker": "regex",
+          "answer_space": 30,
+          "p_correct_by_chance": 0.03333
+        },
+        {
+          "id": "logic_01",
+          "family": "logic",
+          "checker": "choice",
+          "answer_space": 2,
+          "p_correct_by_chance": 0.5
+        },
+        {
+          "id": "logic_02",
+          "family": "logic",
+          "checker": "choice",
+          "answer_space": 2,
+          "p_correct_by_chance": 0.5
+        },
+        {
+          "id": "logic_03",
+          "family": "logic",
+          "checker": "exact_int",
+          "answer_space": 31,
+          "p_correct_by_chance": 0.03226
+        },
+        {
+          "id": "logic_04",
+          "family": "logic",
+          "checker": "exact_int",
+          "answer_space": 31,
+          "p_correct_by_chance": 0.03226
+        },
+        {
+          "id": "logic_05",
+          "family": "logic",
+          "checker": "choice",
+          "answer_space": 2,
+          "p_correct_by_chance": 0.5
+        },
+        {
+          "id": "logic_06",
+          "family": "logic",
+          "checker": "exact_int",
+          "answer_space": 31,
+          "p_correct_by_chance": 0.03226
+        },
+        {
+          "id": "multi_01",
+          "family": "multistep",
+          "checker": "exact_int",
+          "answer_space": 31,
+          "p_correct_by_chance": 0.03226
+        },
+        {
+          "id": "multi_02",
+          "family": "multistep",
+          "checker": "exact_int",
+          "answer_space": 31,
+          "p_correct_by_chance": 0.03226
+        },
+        {
+          "id": "multi_03",
+          "family": "multistep",
+          "checker": "exact_int",
+          "answer_space": 31,
+          "p_correct_by_chance": 0.03226
+        },
+        {
+          "id": "multi_04",
+          "family": "multistep",
+          "checker": "exact_int",
+          "answer_space": 31,
+          "p_correct_by_chance": 0.03226
+        }
+      ]
+    }
+  }
+}

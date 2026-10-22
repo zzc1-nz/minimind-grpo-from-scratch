@@ -1,0 +1,10 @@
+{
+  "steps": 134817,
+  "epochs": 1,
+  "tokens_per_step": 16384,
+  "total_tokens": 2208841728,
+  "wall_sec": 15940.8,
+  "peak_alloc_MiB": 5265,
+  "peak_reserved_MiB": 5296,
+  "final_weight": "D:/llm-rl-lab/src/minimind-master/out/pretrain_768.pth"
+}

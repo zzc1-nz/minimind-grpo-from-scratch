@@ -1,0 +1,43 @@
+# Byte-compiled / cache
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+
+# Virtual environments
+.venv/
+venv/
+env/
+demo/.venv/
+
+# Model weights and datasets (far too large for git; regenerate with the scripts)
+*.pth
+*.pt
+*.safetensors
+*.bin
+*.gguf
+data/tokens/
+data/*.jsonl
+models/
+
+# llama.cpp binaries
+llamacpp/cpu/
+llamacpp/cuda124/
+llamacpp/cudart124/
+llamacpp/downloads/
+
+# Logs (the summaries under logs/ are intentionally committed; raw JSONL streams are not)
+logs/*.jsonl
+logs/*.log
+logs/*.err
+logs/_*/
+
+# Training checkpoints
+checkpoints/
+
+# Editor / OS noise
+.vscode/
+.idea/
+Thumbs.db
+desktop.ini
+*.tmp

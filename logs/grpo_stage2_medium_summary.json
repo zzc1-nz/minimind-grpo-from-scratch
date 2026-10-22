@@ -1,0 +1,10 @@
+{
+  "steps": 400,
+  "opt_steps": 400,
+  "cum_sampled_tokens": 487424,
+  "cum_prompt_tokens": 69772,
+  "wall_sec": 451.2,
+  "final_weight": "D:\\llm-rl-lab\\src\\minimind-master\\out/grpo_stage2_medium_768.pth",
+  "peak_alloc_MiB": 4861,
+  "peak_reserved_MiB": 5320
+}

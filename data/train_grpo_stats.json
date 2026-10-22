@@ -1,0 +1,28 @@
+{
+  "grpo": {
+    "path": "D:/llm-rl-lab/data\\grpo\\train_grpo.jsonl",
+    "n": 600,
+    "sha256": "57576f34b05c5edc3930cd0f7f4f6296328ebcf319b328abc2730fdaffc37c1c",
+    "seed": 42,
+    "per_family": {
+      "arithmetic": 200,
+      "format": 150,
+      "logic": 150,
+      "multistep": 100
+    }
+  },
+  "sft_aux": {
+    "path": "D:/llm-rl-lab/data\\sft\\sft_aux.jsonl",
+    "n": 120,
+    "sha256": "d226b16a093bc9425fd73cf3c3ada005c499703f039a197542a962e30a33394c",
+    "seed": 1337,
+    "per_family": {
+      "arithmetic": 40,
+      "format": 30,
+      "logic": 30,
+      "multistep": 20
+    }
+  },
+  "heldout_overlap": 0,
+  "heldout_sha256": "6d873f2ab30ac0b31017e1cdaf62f78fc54e8358fdaedf31b1e103e6235b88df"
+}

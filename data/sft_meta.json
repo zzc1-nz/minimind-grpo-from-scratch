@@ -1,0 +1,122 @@
+{
+  "created_at": "2026-10-21T05:48:07+0800",
+  "out_path": "D:/llm-rl-lab/data/sft/sft_train.jsonl",
+  "out_bytes": 307881880,
+  "out_sha256": "f22f685712944e6361629c5304ada02eafbceaaeb5fc9f907cfc501c1a95b00f",
+  "out_records": 200000,
+  "seed": 42,
+  "max_general": 160000,
+  "aux_repeat": 20,
+  "max_seq_len": 768,
+  "batch_size_for_padded_math": 16,
+  "sources": {
+    "general": {
+      "path": "D:/llm-rl-lab/data/sft_t2t_mini.jsonl",
+      "records": 160000
+    },
+    "aux": {
+      "path": "D:/llm-rl-lab/data/sft/sft_seed.jsonl",
+      "tasks": 2000,
+      "records": 40000,
+      "families": {
+        "arithmetic": 400,
+        "format": 600,
+        "logic": 1000
+      },
+      "shapes": {
+        "add": 400,
+        "choice_sum": 300,
+        "cmp": 400,
+        "json_sum": 300,
+        "max3": 300,
+        "parity": 300
+      }
+    }
+  },
+  "sampling": {
+    "general_scanned": 905639,
+    "general_eligible": 905639,
+    "general_excluded_heldout_leak": 0,
+    "general_excluded_malformed": 0,
+    "general_malformed_lines_skipped": 1,
+    "general_sampled": 160000,
+    "aux_records": 40000,
+    "message_keys_dropped": 0
+  },
+  "heldout": {
+    "path": "D:/llm-rl-lab/eval/heldout_tasks.jsonl",
+    "tasks": 24,
+    "leak_count": 0,
+    "method": "exact substring: heldout prompt in any user-turn text"
+  },
+  "aux_fraction_by_record": 0.2,
+  "bom": false,
+  "tokens": {
+    "note": "measured by rendering every record through the chat template (assistant turns keep their <think> block, i.e. post_processing_chat(remove_empty_think=False), which is what custom/train_full_sft_counted.py feeds the model) and tokenizing with the MiniMind tokenizer; labeled = assistant-only positions using the SFTDataset.generate_labels algorithm",
+    "untruncated": {
+      "records": 200000,
+      "prompt_tokens": 80977303,
+      "labeled_tokens": 67083284
+    },
+    "at_max_seq_len": {
+      "max_seq_len": 768,
+      "prompt_tokens": 80094979,
+      "labeled_tokens": 66236849,
+      "truncated_records": 8774,
+      "padded_tokens_per_epoch": 153600000
+    },
+    "alt_seq_lens": {
+      "512": {
+        "prompt_tokens": 71579782,
+        "labeled_tokens": 58086663,
+        "truncated_records": 72270,
+        "padded_tokens_per_epoch": 102400000
+      },
+      "640": {
+        "prompt_tokens": 77838867,
+        "labeled_tokens": 64083875,
+        "truncated_records": 29362,
+        "padded_tokens_per_epoch": 128000000
+      },
+      "896": {
+        "prompt_tokens": 80680335,
+        "labeled_tokens": 66790813,
+        "truncated_records": 2062,
+        "padded_tokens_per_epoch": 179200000
+      }
+    },
+    "per_source": {
+      "general": {
+        "records": 160000,
+        "tokens_prompt_full": 79281003,
+        "tokens_labeled_full": 66675244,
+        "tokens_prompt_used": 78398679,
+        "tokens_labeled_used": 65828809,
+        "n_truncated": 8774,
+        "n_records_with_labels": 160000
+      },
+      "aux": {
+        "records": 40000,
+        "tokens_prompt_full": 1696300,
+        "tokens_labeled_full": 408040,
+        "tokens_prompt_used": 1696300,
+        "tokens_labeled_used": 408040,
+        "n_truncated": 0,
+        "n_records_with_labels": 40000
+      }
+    },
+    "labeled_fraction_of_prompt": 0.8284,
+    "tokenize_sec": 56.4,
+    "label_fn_check": {
+      "n_records": 200,
+      "mismatches": 0,
+      "repo_labeled_full_on_sample": 69173,
+      "repo_labeled_trunc_on_sample": 68469,
+      "fast_labeled_full_on_sample": 69173,
+      "fast_labeled_trunc_on_sample": 68469
+    }
+  },
+  "aux_fraction_by_labeled_tokens": 0.00608259,
+  "build_wall_sec": 92.1,
+  "max_sampled_rss_MB": 1371.48828125
+}
