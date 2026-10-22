@@ -1,0 +1,18 @@
+{
+  "benchmark": "minimind_heldout_v1",
+  "created_at": "2026-10-21T04:17:43+08:00",
+  "frozen": true,
+  "note": "Held-out evaluation benchmark. These files are FROZEN: do not edit heldout_tasks.jsonl or grader.py after this lock is created. Any change invalidates comparisons between checkpoints (SFT vs GRPO). Re-run grader.py self-test to verify integrity; run_eval.py records the tasks sha256 in every report and flags a mismatch.",
+  "seed": 42,
+  "files": {
+    "heldout_tasks.jsonl": {
+      "sha256": "6d873f2ab30ac0b31017e1cdaf62f78fc54e8358fdaedf31b1e103e6235b88df",
+      "bytes": 5283,
+      "records": 24
+    },
+    "grader.py": {
+      "sha256": "c053ec4fbdc522ecc9296365f8276603745bbfdaae1a73839708c6aaf72fe521",
+      "bytes": 26170
+    }
+  }
+}
