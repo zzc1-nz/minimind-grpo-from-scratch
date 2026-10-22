@@ -315,8 +315,9 @@ evaluator. `torch.backends.cudnn.deterministic` is set in the eval harness.
 
 ## License
 
-MIT — see [LICENSE](LICENSE). Built on [MiniMind](https://github.com/jingyaogong/minimind)
-(Apache-2.0), which setup.py clones at install time rather than vendoring here.
+MIT — see [LICENSE](LICENSE). Third-party attributions (MiniMind is Apache-2.0) are in
+[THIRD_PARTY_NOTICES.md](THIRD_PARTY_NOTICES.md).
 
-The model weights, corpora and tokenized blocks are **not** included; see section 0 to
-regenerate them.
+Built on [MiniMind](https://github.com/jingyaogong/minimind), which setup.py clones at
+install time rather than vendoring here. The model weights, corpora and tokenized blocks
+are **not** included; see section 0 to regenerate them.
