@@ -312,3 +312,11 @@ evaluator. `torch.backends.cudnn.deterministic` is set in the eval harness.
 
 *README generated 2026-10-22 17:30:23 from measured artifacts by
 `tools/make_readme.py`.*
+
+## License
+
+MIT — see [LICENSE](LICENSE). Built on [MiniMind](https://github.com/jingyaogong/minimind)
+(Apache-2.0), which setup.py clones at install time rather than vendoring here.
+
+The model weights, corpora and tokenized blocks are **not** included; see section 0 to
+regenerate them.
